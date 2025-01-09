@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema({
         lastname:{
             type:String,
             minlength : [3, 'Last name must be atleast 3 characters long']
-        },
+        }
+    },
         email:{
             type:String,
             required:true,
@@ -27,7 +28,7 @@ const userSchema = new mongoose.Schema({
         socketID:{ //live tracking of driver or captain with the user 
             type:String
         }
-    }
+    
 })
 
 //methods creation 
