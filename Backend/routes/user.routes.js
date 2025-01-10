@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user.controller');
-
+const authMiddleware = require("../middlewares/auth.middlewares");
 //the data we are getting from frontend we have to validate the data  - express validator
 const {body} = require("express-validator");
 
@@ -20,5 +20,9 @@ router.post('/login',[
 ],
   userController.loginUser
 )
+
+//profile for the user
+
+router.get('/profile',authMiddleware.authUser,userController.getUserProfile);
 module.exports = router;
 

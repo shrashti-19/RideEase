@@ -1,7 +1,7 @@
 const userModel = require('../models/user.models');
 const userService = require("../services/user.service");
 const {validationResult} = require('express-validator');
-
+const authMiddleware = require('../middlewares/auth.middlewares')
 module.exports.registerUser = async(req , res , next)=>{
     //logic - mongodb chahhiye
     console.log(req.body);
@@ -56,6 +56,19 @@ module.exports.loginUser = async(req,res,next)=>{
     //password is matched
     const token = user.generateAuthToken();
 
+    res.cookie('token',token);
     res.status(200)
     .json({token,user});
 }
+
+//profile of the user
+
+module.exports.getUserProfile = async(req,res,next) =>{
+//profile page user can see only 
+   // we have to put a middleware there for finding which user is logged at that time
+   //if no user is logged in at that time unauthorized access error message
+   res.status(200)
+   .json(req.user)//middleware mein set kiya hoga 
+}
+   
+
