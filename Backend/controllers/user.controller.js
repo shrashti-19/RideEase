@@ -68,7 +68,7 @@ module.exports.getUserProfile = async(req,res,next) =>{
    // we have to put a middleware there for finding which user is logged at that time
    //if no user is logged in at that time unauthorized access error message
    res.status(200)
-   .json(req.user)//middleware mein set kiya hoga 
+   .json(req.user)//middleware mein set kiya hoga phir use krna hai 
 }
    
 

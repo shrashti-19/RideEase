@@ -11,7 +11,8 @@ module.exports.authUser = async(req,res,next)=>{
         return res.status(401)
         .json({message : 'Unauthorized'});
     }
-    //token is found
+    //token is found 
+    //cookie parser should be in the app js
     try{
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
         const user = await userModel.findById(decoded._id);

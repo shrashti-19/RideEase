@@ -23,6 +23,6 @@ router.post('/login',[
 
 //profile for the user
 
-router.get('/profile',authMiddleware.authUser,userController.getUserProfile);
+router.get('/profile',authMiddleware.authUser,userController.getUserProfile); //use the authmiddleware
 module.exports = router;
 
