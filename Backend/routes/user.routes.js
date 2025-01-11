@@ -24,5 +24,6 @@ router.post('/login',[
 //profile for the user
 
 router.get('/profile',authMiddleware.authUser,userController.getUserProfile); //use the authmiddleware
+router.get('/logout',authMiddleware.authUser,userController.logoutUser);
 module.exports = router;
 

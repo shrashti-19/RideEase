@@ -1,7 +1,8 @@
 const userModel = require('../models/user.models');
 const userService = require("../services/user.service");
 const {validationResult} = require('express-validator');
-const authMiddleware = require('../middlewares/auth.middlewares')
+const blacklistTokenModel = require("../models/blacklistToken.model");
+
 module.exports.registerUser = async(req , res , next)=>{
     //logic - mongodb chahhiye
     console.log(req.body);
@@ -70,5 +71,16 @@ module.exports.getUserProfile = async(req,res,next) =>{
    res.status(200)
    .json(req.user)//middleware mein set kiya hoga phir use krna hai 
 }
-   
+
+
+//logout
+module.exports.logoutUser = async(req,res,next)=>{
+    res.clearCookie('token');
+    const token = req.cookies.token || (req.headers.authorization && req.headers.authorization.split(' ')[1]);
+    res.status(200)
+    .json({message:'Logged Out'})
+    //abhi bhi user ke pass localstorage pe token ho skta hai agar usnse share kr liya hot oh
+    
+}
+
 
