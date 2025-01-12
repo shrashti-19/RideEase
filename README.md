@@ -155,3 +155,33 @@ This endpoint is used to log out the user. It clears the authentication token fr
     "message": "Logged Out"
   }
   ```
+
+## Captain Model Documentation
+
+### Captain Schema
+The `captainSchema` defines the structure of the captain document in the MongoDB database. It includes the following fields:
+
+- `fullname` (object, required): An object containing the captain's full name.
+  - `firstname` (string, required): The first name of the captain. Must be at least 3 characters long.
+  - `lastname` (string, required): The last name of the captain. Must be at least 3 characters long.
+- `email` (string, required): The email address of the captain. Must be unique and in a valid email format.
+- `password` (string, required): The password for the captain. It is stored as a hashed value and is not selected by default.
+- `socketId` (string): The socket ID for real-time communication.
+- `status` (string, required): The availability status of the captain. It can be either 'active' or 'inactive'. The default value is 'inactive'.
+- `vehicle` (object, required): An object containing the vehicle details.
+  - `color` (string, required): The color of the vehicle. Must be at least 3 characters long.
+  - `plate` (number, required): The plate number of the vehicle. Must be at least 1.
+  - `vehicleTypes` (string, required): The type of the vehicle. It can be either 'car', 'motorcycle', or 'auto'.
+- `location` (object): An object containing the location details.
+  - `latitude` (number): The latitude of the captain's location.
+  - `longitude` (number): The longitude of the captain's location.
+
+### Methods
+
+#### `generateAuthToken`
+Generates a JWT for the captain.
+```javascript
+captainSchema.methods.generateAuthToken = function() {
+  const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
+  return token;
+};
