@@ -115,6 +115,26 @@ The request body should be a JSON object containing the following fields:
   }
   ```
 
+##### Error (400 Bad Request)
+- **Status Code**: 400
+- **Body**: A JSON object containing the error details.
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Invalid Email",
+        "param": "email",
+        "location": "body"
+      },
+      {
+        "msg": "Password must be 6 characters long",
+        "param": "password",
+        "location": "body"
+      }
+    ]
+  }
+  ```
+
 ## User Profile Endpoint Documentation
 
 ### GET /users/profile
@@ -185,3 +205,165 @@ captainSchema.methods.generateAuthToken = function() {
   const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
   return token;
 };
+```
+
+#### `comparePassword`
+Compares the provided password with the captain's hashed password.
+```javascript
+captainSchema.methods.comparePassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
+```
+
+#### `hashPassword`
+Hashes the provided password using bcrypt.
+```javascript
+async function hashPassword(password) {
+  return await bcrypt.hash(password, 10);
+}
+```
+
+#### Response
+##### Success (201 Created)
+- **Status Code**: 201
+- **Body**: A JSON object containing the captain details.
+  ```json
+  {
+    "message": "Captain registered successfully",
+    "captain": {
+      "_id": "string",
+      "fullname": {
+        "firstname": "string",
+        "lastname": "string"
+      },
+      "email": "string",
+      "password": "string",
+      "vehicle": {
+        "color": "string",
+        "plate": "string",
+        "capacity": "number",
+        "vehicleTypes": "string"
+      },
+      "status": "string",
+      "socketId": "string",
+      "location": {
+        "latitude": "number",
+        "longitude": "number"
+      }
+    }
+  }
+  ```
+
+##### Error (400 Bad Request)
+- **Status Code**: 400
+- **Body**: A JSON object containing the error details.
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Invalid Email",
+        "param": "email",
+        "location": "body"
+      },
+      {
+        "msg": "First name must be atleast 3 characters long",
+        "param": "fullname.firstname",
+        "location": "body"
+      },
+      {
+        "msg": "Last name should be 3 characters long",
+        "param": "fullname.lastname",
+        "location": "body"
+      },
+      {
+        "msg": "Password must be 6 characters long",
+        "param": "password",
+        "location": "body"
+      },
+      {
+        "msg": "Color must be at least 3 characters long",
+        "param": "vehicle.color",
+        "location": "body"
+      },
+      {
+        "msg": "Plate must be at least 3 characters long",
+        "param": "vehicle.plate",
+        "location": "body"
+      },
+      {
+        "msg": "Capacity must be at least 1",
+        "param": "vehicle.capacity",
+        "location": "body"
+      },
+      {
+        "msg": "Invalid vehicle type",
+        "param": "vehicle.vehicleTypes",
+        "location": "body"
+      }
+    ]
+  }
+  ```
+
+## Captain Login Endpoint Documentation
+
+### POST /captains/login
+
+#### Description
+This endpoint is used to log in an existing captain. It validates the input data, checks the captain's credentials, and returns an authentication token along with the captain details.
+
+#### Request Body
+The request body should be a JSON object containing the following fields:
+
+- `email` (string, required): The email address of the captain. Must be a valid email format.
+- `password` (string, required): The password for the captain. Must be at least 6 characters long.
+
+#### Response
+##### Success (200 OK)
+- **Status Code**: 200
+- **Body**: A JSON object containing the authentication token and captain details.
+  ```json
+  {
+    "token": "string",
+    "captain": {
+      "_id": "string",
+      "fullname": {
+        "firstname": "string",
+        "lastname": "string"
+      },
+      "email": "string",
+      "password": "string",
+      "socketId": "string",
+      "status": "string",
+      "vehicle": {
+        "color": "string",
+        "plate": "string",
+        "capacity": "number",
+        "vehicleTypes": "string"
+      },
+      "location": {
+        "latitude": "number",
+        "longitude": "number"
+      }
+    }
+  }
+  ```
+
+##### Error (400 Bad Request)
+- **Status Code**: 400
+- **Body**: A JSON object containing the error details.
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Invalid Email",
+        "param": "email",
+        "location": "body"
+      },
+      {
+        "msg": "Password must be 6 characters long",
+        "param": "password",
+        "location": "body"
+      }
+    ]
+  }
+  ```
