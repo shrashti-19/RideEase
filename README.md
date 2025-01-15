@@ -159,6 +159,15 @@ This endpoint is used to get the profile of the logged-in user. It requires auth
   }
   ```
 
+##### Error (401 Unauthorized)
+- **Status Code**: 401
+- **Body**: A JSON object containing the error details.
+  ```json
+  {
+    "message": "Unauthorized access"
+  }
+  ```
+
 ## User Logout Endpoint Documentation
 
 ### GET /users/logout
@@ -364,6 +373,74 @@ The request body should be a JSON object containing the following fields:
         "param": "password",
         "location": "body"
       }
-    ]
+    ],
+    "message": "Invalid email or password"
   }
   ```
+
+## Captain Profile Endpoint Documentation
+
+### GET /captains/profile
+
+#### Description
+This endpoint is used to get the profile of the logged-in captain. It requires authentication.
+
+#### Response
+##### Success (200 OK)
+- **Status Code**: 200
+- **Body**: A JSON object containing the captain details.
+  ```json
+  {
+    "_id": "string",
+    "fullname": {
+      "firstname": "string",
+      "lastname": "string"
+    },
+    "email": "string",
+    "password": "string",
+    "socketId": "string",
+    "status": "string",
+    "vehicle": {
+      "color": "string",
+      "plate": "string",
+      "capacity": "number",
+      "vehicleTypes": "string"
+    },
+    "location": {
+      "latitude": "number",
+      "longitude": "number"
+    }
+  }
+  ```
+
+##### Error (401 Unauthorized)
+- **Status Code**: 401
+- **Body**: A JSON object containing the error details.
+  ```json
+  {
+    "message": "Unauthorized access"
+  }
+  ```
+## Captain Logout Endpoint Documentation
+### GET /captains/logout
+# Description
+This endpoint is used to log out the captain. It clears the authentication token from cookies and blacklists the token.
+
+## Response
+## Success (200 OK)
+## Status Code: 200
+## Body: A JSON object containing a success message
+{
+  "message": "Logged Out"
+}
+
+## Example Request
+curl -X GET http://localhost:3000/captains/logout \
+-H "Authorization: Bearer <token>"
+
+## Example Response
+### Succes
+
+{
+  "message": "Logged Out"
+}
