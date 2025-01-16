@@ -444,3 +444,6 @@ curl -X GET http://localhost:3000/captains/logout \
 {
   "message": "Logged Out"
 }
+
+
+## FRONTEND PART
