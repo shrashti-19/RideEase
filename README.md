@@ -447,3 +447,51 @@ curl -X GET http://localhost:3000/captains/logout \
 
 
 ## FRONTEND PART
+
+## Description: The Home component is a React functional component that serves as the landing page for the application. It displays a background image, the Uber logo, and a button to continue to the login page.
+
+Props: none
+
+State: none 
+
+
+Methods:none 
+
+## Usage: This component is used as the main entry point for users visiting the application. It provides a visually appealing introduction and a call-to-action button to proceed to the login page.
+
+
+
+## UserSignup.jsx
+## Description: The UserSignup component is a React functional component that provides a signup form for users. It includes input fields for first name, last name, email, and password to register a new user.
+
+Props:
+
+None
+State:
+
+email (string): The email entered by the user.
+password (string): The password entered by the user.
+firstname (string): The first name entered by the user.
+lastname (string): The last name entered by the user.
+userData (object): The user data object containing the entered information.
+Methods:
+
+submitHandler: Handles the form submission and updates the user data state.
+Usage: This component is used to render a signup form for users, allowing them to register for the application.
+
+
+
+## UserLogin.jsx
+## Description: The UserLogin component is a React functional component that provides a login form for users. It includes input fields for email and password to authenticate a user.
+
+ Props: none 
+ State: none 
+
+email (string): The email entered by the user.
+ password (string): The password entered by the user.
+userData (object): The user data object containing the entered information.
+
+ Methods:
+
+# submitHandler: Handles the form submission and updates the user data state.
+# Usage: This component is used to render a login form for users, allowing them to log in to the application.

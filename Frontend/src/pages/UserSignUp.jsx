@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 const UserSignup = ()=>{
+    //2 way binding
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('')
+    const [firstname,setFirstName]=useState('');
+    const [lastname,setLastName]=useState('');
+    const [userData,setUserData]=useState({})
+
+    const submitHandler=(e)=>{
+        e.preventDefault();
+        setUserData({
+            username:{
+                firstname:firstname,
+                lastname:lastname
+            },
+            email:email,
+            password:password
+        })
+    
+
+        setEmail('');
+        setFirstName('');
+        setLastName('');
+        setPassword('');
+    };
+    useEffect(() => {
+        console.log(userData);
+    }, [userData]);
     return(
         <div className="p-7 h-screen lex flex-col justify-between">
         <div>
@@ -15,12 +42,20 @@ const UserSignup = ()=>{
              required 
              className="bg-[#eeeeee] w-1/2 mb-6 rounded px-4 py-2 border  text-lg placeholder:text-base"
              type="text"
+             value={firstname}
+             onChange={(e)=>{
+                setFirstName(e.target.value)
+             }}
              placeholder="First Name">
              </input>
              <input 
              required 
              className="bg-[#eeeeee] mb-6 rounded px-4 py-2 border w-1/2 text-lg placeholder:text-base"
              type="text"
+             value={lastname}
+             onChange={(e)=>{
+                setLastName(e.target.value)
+             }}
              placeholder="Last Name">
              </input>
         
@@ -30,6 +65,10 @@ const UserSignup = ()=>{
              required 
              className="bg-[#eeeeee] mb-7 rounded px-4 py-2 border w-full text-lg placeholder:text-base"
              type="email"
+             value={email}
+             onChange={(e)=>{
+                setEmail(e.target.value)
+             }}
              placeholder="email@example.com">
              </input>
 
@@ -40,7 +79,12 @@ const UserSignup = ()=>{
              <input 
              required type="password"
              className="bg-[#eeeeee] mb-7 rounded px-4 py-2 border w-full text-lg placeholder:text-base"
-             placeholder="password"/>
+             placeholder="password"
+             value={password}
+             onChange={(e)=>{
+                setPassword(e.target.value)
+             }}
+             />
              <button
              className="bg-[#111] text-white font-semibold mb-7 rounded px-4 py-2  w-full text-lg placeholder:text-base"
              >Login</button>
