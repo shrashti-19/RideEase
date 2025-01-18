@@ -495,3 +495,33 @@ userData (object): The user data object containing the entered information.
 
 # submitHandler: Handles the form submission and updates the user data state.
 # Usage: This component is used to render a login form for users, allowing them to log in to the application.
+
+
+### CaptainSignup.jsx
+## Description: The CaptainSignup component is a React functional component that provides a signup form for captains. It includes input fields for email and other necessary information to register a new captain.
+
+Props:
+
+None
+State:
+
+email (string): The email entered by the captain.
+Methods:
+
+None
+## Usage: This component is used to render a signup form for captains, allowing them to register for the application.
+
+
+### CaptainLogin.jsx
+## Description: The CaptainLogin component is a React functional component that provides a login form for captains. It includes input fields for email and password to authenticate a captain.
+
+Props:
+
+None
+State:
+
+email (string): The email entered by the captain.
+Methods:
+
+None
+## Usage: This component is used to render a login form for captains, allowing them to log in to the application.
