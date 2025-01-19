@@ -11,7 +11,7 @@ const CaptainSignup = ()=>{
     const submitHandler=(e)=>{
         e.preventDefault();
         setCaptainData({
-            username:{
+            fullName:{
                 firstname:firstname,
                 lastname:lastname
             },
@@ -36,7 +36,7 @@ const CaptainSignup = ()=>{
              submitHandler(e)
          }}>
         
-        <h3 className="text-lg font-medium mb2 ">What's your name?</h3>
+        <h3 className="text-lg font-medium mb2 ">What's our Captain's name?</h3>
         <div className="flex gap-2">
             <input 
              required 

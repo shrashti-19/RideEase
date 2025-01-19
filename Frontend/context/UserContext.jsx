@@ -1,12 +1,20 @@
-import React from "react";
-
+import React, { createContext, useState } from "react";
+export const UserDataContext = createContext()
 //whole application would be wrapped inside the context
 
 const UserContext = ({children}) => {
+    const [user,setUser]=useState({
+        email:'',
+        fullName:{
+            firstName:'',
+            lastName:''
+        }
+    })
     return(
         <div>
-            {children}
-
+            <UserDataContext.Provider value={[user,setUser]}>
+                {children}
+            </UserDataContext.Provider>
         </div>
     )
 }
