@@ -1,5 +1,8 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { UserDataContext } from "../../context/UserContext";
 const UserSignup = ()=>{
     //2 way binding
     const [email,setEmail]=useState('');
@@ -7,27 +10,48 @@ const UserSignup = ()=>{
     const [firstname,setFirstName]=useState('');
     const [lastname,setLastName]=useState('');
     const [userData,setUserData]=useState({})
+    
 
-    const submitHandler=(e)=>{
+
+    const navigate = useNavigate();
+
+    //we have passed into usercontext
+    const {user,setUser} = useContext(UserDataContext);
+    
+    const submitHandler=async(e)=>{
         e.preventDefault();
-        setUserData({
-            fullName:{
+        const newUser ={
+            fullname:{
                 firstname:firstname,
                 lastname:lastname
             },
             email:email,
             password:password
-        })
+        }
+
+
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser);
+            if(response.status === 201) {
+                setUser(response.data.user);
+                navigate('/home');
+                setEmail('');
+                setFirstName('');
+                setLastName('');
+                setPassword('');
+            }
+          } catch (error) {
+            console.error('Error during signup:', error.response ? error.response.data : error.message);
+
+          }
+          
     
 
-        setEmail('');
-        setFirstName('');
-        setLastName('');
-        setPassword('');
+       
     };
-    useEffect(() => {
-        console.log(userData);
-    }, [userData]);
+    // useEffect(() => {
+    //     console.log(userData);
+    // }, [userData]);
     return(
         <div className="p-7 h-screen lex flex-col justify-between">
         <div>
@@ -87,7 +111,7 @@ const UserSignup = ()=>{
              />
              <button
              className="bg-[#111] text-white font-semibold mb-7 rounded px-4 py-2  w-full text-lg placeholder:text-base"
-             >Login</button>
+             >Create Account </button>
          
          <div className="text-center">
             <p>Already have an account</p>
