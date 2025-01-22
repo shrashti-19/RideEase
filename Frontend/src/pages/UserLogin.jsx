@@ -1,23 +1,42 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState ,useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
+import { UserDataContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const UserLogin = ()=>{
     const [email,setEmail]=useState('')
     const [password,setPassword] = useState('')
     const[userData,setUserData]=useState({})
     
+    const {user,setUser} = useContext(UserDataContext);
+    const navigate = useNavigate();
     
-    
-    const submitHandler=(e)=>{
+    const submitHandler = async (e) => {
         e.preventDefault();
-        setUserData({
-            email:email,
-            password:password
-        })   
-        
-        
-        setEmail('');
-        setPassword('')
+    
+        const userData = {
+            email: email,
+            password: password
+        };
+    
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData);
 
+    
+            if (response.status === 200) {
+                const data = response.data;
+                setUser(data.user); // Assuming your backend sends user data as `user`.
+                localStorage.setItem('token',data.token)
+                navigate('/home');
+            }
+        } catch (error) {
+            console.error("Login failed:", error.message);
+            alert("Login failed. Please check your credentials or try again later.");
+        }
+    
+        setEmail('');
+        setPassword('');
     };
     useEffect(() => {
         console.log("Updated userData:", userData);
