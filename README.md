@@ -448,18 +448,24 @@ curl -X GET http://localhost:3000/captains/logout \
 
 ## FRONTEND PART
 
-## Description: The Home component is a React functional component that serves as the landing page for the application. It displays a background image, the Uber logo, and a button to continue to the login page.
+## Home.jsx
 
-Props: none
+**Description:**
+The `Home` component is a React functional component that serves as the landing page for the application. It displays a background image, the Uber logo, and a button to continue to the login page.
 
-State: none 
+**Props:**
+- None
 
+**State:**
+- None
 
-Methods:none 
+**Methods:**
+- None
 
-## Usage: This component is used as the main entry point for users visiting the application. It provides a visually appealing introduction and a call-to-action button to proceed to the login page.
+**Usage:**
+This component is used as the main entry point for users visiting the application. It provides a visually appealing introduction and a call-to-action button to proceed to the login page.
 
-
+---
 
 ## UserSignup.jsx
 ## Description: The UserSignup component is a React functional component that provides a signup form for users. It includes input fields for first name, last name, email, and password to register a new user.
@@ -482,20 +488,44 @@ Usage: This component is used to render a signup form for users, allowing them t
 
 
 ## UserLogin.jsx
-## Description: The UserLogin component is a React functional component that provides a login form for users. It includes input fields for email and password to authenticate a user.
 
- Props: none 
- State: none 
+**Description:**
+The `UserLogin` component is a React functional component that provides a login form for users. It includes input fields for email and password to authenticate a user.
 
-email (string): The email entered by the user.
- password (string): The password entered by the user.
-userData (object): The user data object containing the entered information.
+**Props:**
+- None
 
- Methods:
+**State:**
+- `email` (string): The email entered by the user.
+- `password` (string): The password entered by the user.
+- `userData` (object): The user data object containing the entered information.
 
-# submitHandler: Handles the form submission and updates the user data state.
-# Usage: This component is used to render a login form for users, allowing them to log in to the application.
+**Methods:**
+- `submitHandler`: Handles the form submission and updates the user data state.
 
+**Usage:**
+This component is used to render a login form for users, allowing them to log in to the application.
+
+---
+
+## UserContext.jsx
+
+**Description:**
+The `UserContext` component is a React functional component that provides a context for the entire application. It wraps the application inside a context provider, allowing state and functions to be shared across different components.
+
+**Props:**
+- `children` (ReactNode): The child components that will be wrapped by the context provider.
+
+**State:**
+- `user` (object): The user data object containing email and full name.
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to wrap the entire application, enabling the use of context to manage global state and share data between components.
+
+---
 
 ### CaptainSignup.jsx
 ## Description: The CaptainSignup component is a React functional component that provides a signup form for captains. It includes input fields for email and other necessary information to register a new captain.
@@ -506,22 +536,144 @@ None
 State:
 
 email (string): The email entered by the captain.
+password (string): The password entered by the captain.
+firstName (string): The first name entered by the captain.
+
 Methods:
 
 None
 ## Usage: This component is used to render a signup form for captains, allowing them to register for the application.
 
+---
 
 ### CaptainLogin.jsx
-## Description: The CaptainLogin component is a React functional component that provides a login form for captains. It includes input fields for email and password to authenticate a captain.
 
-Props:
+**Description:**
+The `CaptainLogin` component is a React functional component that provides a login form for captains. It includes input fields for email and password to authenticate a captain.
 
-None
-State:
+**Props:**
+- None
 
-email (string): The email entered by the captain.
-Methods:
+**State:**
+- `email` (string): The email entered by the captain.
+- `password` (string): The password entered by the captain.
 
-None
-## Usage: This component is used to render a login form for captains, allowing them to log in to the application.
+**Methods:**
+- `submitHandler`: Handles the form submission for logging in the captain.
+
+**Usage:**
+This component is used to render a login form for captains, allowing them to log in to the application.
+
+---
+
+## Main.jsx
+
+**Description:**
+The `Main` component is the entry point of the React application. It sets up the application with necessary providers and renders the root component.
+
+**Props:**
+- None
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to initialize the React application and wrap it with necessary context providers and routing.
+
+---
+
+## App.jsx
+
+**Description:**
+The `App` component is the root component of the application. It serves as the main container for all other components and handles the routing and layout of the application.
+
+**Props:**
+- None
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used as the main entry point for the React application. It typically includes routing logic and renders the main layout of the application.
+
+---
+
+## CaptainProtectedWrapper.jsx
+
+**Description:**
+The `CaptainProtectedWrapper` component is a React functional component that protects routes for captains. It ensures that only authenticated captains can access certain routes.
+
+**Props:**
+- `children` (ReactNode): The child components that will be rendered if the captain is authenticated.
+
+**State:**
+- `isLoading` (boolean): Indicates whether the authentication check is in progress.
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to wrap routes that should only be accessible to authenticated captains.
+
+---
+
+## UserProtectedWrapper.jsx
+
+**Description:**
+The `UserProtectedWrapper` component is a React functional component that protects routes for users. It ensures that only authenticated users can access certain routes.
+
+**Props:**
+- `children` (ReactNode): The child components that will be rendered if the user is authenticated.
+
+**State:**
+- `isLoading` (boolean): Indicates whether the authentication check is in progress.
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to wrap routes that should only be accessible to authenticated users.
+
+---
+
+## UserLogout.jsx
+
+**Description:**
+The `UserLogout` component is a React functional component that handles the logout process for users. It makes an API request to log out the user and redirects them to the login page.
+
+**Props:**
+- None
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to log out the user and redirect them to the login page.
+
+---
+
+## CaptainLogout.jsx
+
+**Description:**
+The `CaptainLogout` component is a React functional component that handles the logout process for captains. It makes an API request to log out the captain and redirects them to the captain login page.
+
+**Props:**
+- None
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to log out the captain and redirect them to the captain login page.
