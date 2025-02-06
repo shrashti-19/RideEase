@@ -677,3 +677,186 @@ The `CaptainLogout` component is a React functional component that handles the l
 
 **Usage:**
 This component is used to log out the captain and redirect them to the captain login page.
+
+### Home.jsx
+
+**Description:**
+The `Home` component is a React functional component that serves as the landing page for the application. It displays a background image, the Uber logo, and a form to input pickup and destination locations.
+
+**Props:**
+- None
+
+**State:**
+- `pickup` (string): The pickup location entered by the user.
+- `destination` (string): The destination location entered by the user.
+- `panelOpen` (boolean): State to control the visibility of the location search panel.
+- `vehiclePanelOpen` (boolean): State to control the visibility of the vehicle selection panel.
+- `confirmedRidePanel` (boolean): State to control the visibility of the confirmed ride panel.
+- `vehicleFound` (boolean): State to control the visibility of the vehicle found panel.
+- `waitingForDriver` (boolean): State to control the visibility of the waiting for driver panel.
+
+**Methods:**
+- `submitHandler`: Handles the form submission to prevent default behavior.
+- `useGSAP`: Animates the panels using GSAP based on the state changes.
+
+**Usage:**
+This component is used as the main entry point for users to find and book a ride.
+
+### Riding.jsx
+
+**Description:**
+The `Riding` component is a React functional component that displays the current ride details, including the vehicle, driver, and fare information.
+
+**Props:**
+- None
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to display the details of the ongoing ride and provide an option to make a payment.
+
+### Start.jsx
+
+**Description:**
+The `Start` component is a React functional component that serves as the starting page for the application. It displays a background image, the Uber logo, and a button to continue to the login page.
+
+**Props:**
+- None
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used as the initial landing page for users to get started with the application.
+
+### ConfirmRidePopUp.jsx
+
+**Description:**
+The `ConfirmRidePopUp` component is a React functional component that displays a popup for confirming a ride. It shows the driver details, ride details, and options to confirm or cancel the ride.
+
+**Props:**
+- `setConfirmridePopUpPanel` (function): Function to close the confirm ride popup panel.
+- `setRidePopPanel` (function): Function to close the ride popup panel.
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to confirm or cancel a ride from a popup.
+
+### ConfirmedRide.jsx
+
+**Description:**
+The `ConfirmedRide` component is a React functional component that displays the confirmed ride details, including the pickup and destination locations, and the fare.
+
+**Props:**
+- `setVehiclePanelOpen` (function): Function to close the vehicle panel.
+- `setVehicleFound` (function): Function to set the vehicle found state.
+- `setConfirmRidePanel` (function): Function to close the confirm ride panel.
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to display the confirmed ride details and provide an option to confirm the ride.
+
+### LocationSearchPanel.jsx
+
+**Description:**
+The `LocationSearchPanel` component is a React functional component that displays a list of predefined locations for the user to select as the pickup or destination.
+
+**Props:**
+- `setVehiclePanel` (function): Function to open the vehicle panel.
+- `setPanelOpen` (function): Function to close the location search panel.
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to display a list of locations for the user to select.
+
+### LookingForDriver.jsx
+
+**Description:**
+The `LookingForDriver` component is a React functional component that displays a message indicating that the application is looking for a driver for the ride.
+
+**Props:**
+- `setVehicleFound` (function): Function to set the vehicle found state.
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to display a message while the application is looking for a driver.
+
+### RidePopUp.jsx
+
+**Description:**
+The `RidePopUp` component is a React functional component that displays a popup for a new ride request. It shows the ride details and options to accept or ignore the ride.
+
+**Props:**
+- `setRidePopPanel` (function): Function to close the ride popup panel.
+- `setConfirmridePopUpPanel` (function): Function to open the confirm ride popup panel.
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to display a new ride request and provide options to accept or ignore the ride.
+
+### VehiclePanel.jsx
+
+**Description:**
+The `VehiclePanel` component is a React functional component that displays a list of available vehicles for the user to select for the ride.
+
+**Props:**
+- `setConfirmedRidePanel` (function): Function to open the confirmed ride panel.
+- `setVehiclePanelOpen` (function): Function to close the vehicle panel.
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to display a list of available vehicles for the user to select.
+
+### WaitForDriver.jsx
+
+**Description:**
+The `WaitForDriver` component is a React functional component that displays the details of the driver and vehicle while the user is waiting for the driver to arrive.
+
+**Props:**
+- `waitingForDriver` (function): Function to set the waiting for driver state.
+
+**State:**
+- None
+
+**Methods:**
+- None
+
+**Usage:**
+This component is used to display the details of the driver and vehicle while the user is waiting for the driver to arrive.
