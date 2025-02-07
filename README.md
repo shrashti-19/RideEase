@@ -860,3 +860,4 @@ The `WaitForDriver` component is a React functional component that displays the 
 
 **Usage:**
 This component is used to display the details of the driver and vehicle while the user is waiting for the driver to arrive.
+
