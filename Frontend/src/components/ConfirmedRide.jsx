@@ -45,10 +45,11 @@ const ConfirmedRide = (props) => {
             </div>
           </div>
         </div>
+        <Link to = '/captain-riding'className="w-full mt-1 flex justify-center bg-green-600 font-semibold p-3 rounded-lg"></Link>
         <button onClick={()=>{
             props.setVehicleFound(true);
             props.setConfirmRidePanel(false);
-        }} className="w-full mt-5 bg-green-600 font-semibold p-2 rounded-lg">
+        }} className=" w-full mt-1 bg-green-600 font-semibold p-3 rounded-lg">
           Confirm
         </button>
       </div>
