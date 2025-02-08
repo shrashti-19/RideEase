@@ -9,7 +9,7 @@ const userRoutes = require("./routes/user.routes");
 const captainRoutes = require("./routes/captains.route");
 const cookieParser = require('cookie-parser');
 app.use(cors({
-    origin: 'http://localhost:5174', // Allow only your frontend to make requests
+    origin: 'http://localhost:5173', // Allow only your frontend to make requests
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow only specific methods
     credentials: true, // If you're sending cookies or credentials
   }));
