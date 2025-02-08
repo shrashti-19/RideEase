@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const ConfirmRidePopUp=(props)=>{
+  const [otp,setOtp] = useState();
+   const submitHandler = (e)=>{
+    e.preventDefault();
+   }
     return(
         <div>
             <h5
@@ -49,18 +53,28 @@ const ConfirmRidePopUp=(props)=>{
             </div>
           </div>
         </div>
-        <Link to='/captain-riding' className="w-full mt-1 bg-green-600 font-semibold p-2 rounded-lg">
-  Confirm
-</Link>
-<button
-  onClick={() => {
-    props.setConfirmridePopUpPanel(false);
-    props.setRidePopPanel(false);
-  }}
-  className="w-full mt-1 bg-red-500 text-white font-semibold p-2 rounded-lg"
->
-  Cancel Ride
-</button>
+        <div className="mt-6 w-full">
+           <form onSubmit={(e)=>{
+              submitHandler(e)
+           }}>
+            <input 
+            value={otp}
+            onChange={(e)=>setOtp(e.target.value)}
+            className="bg-[#eee] px-4 py-2 text-base w-full rounded-lg mt-5"
+            type="text" placeholder="Enter OTP"/>
+           <Link to='/captain-riding' className="w-full mt-2 bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 transition duration-300 text-center block">Confirm
+           </Link>
+           <button
+            onClick={() => {
+            props.setConfirmridePopUpPanel(false);
+            props.setRidePopPanel(false);
+          }}
+          className="w-full mt-2 bg-red-500 text-white font-semibold p-2 rounded-lg"
+          >
+           Cancel Ride
+         </button>
+           </form>
+        </div>
 
       </div>
         </div>
