@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-module.exports.getAddressCoordinate = async (address) => {
+exports.getAddressCoordinate = async (address) => {
   try {
     const apiKey = process.env.GOOGLE_MAPS_API; // Ensure you have your API key in environment variables
     const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
